@@ -78,6 +78,7 @@ line-height: 143px;
 font-size: 30px;
 width:96px;
 text-align: center;
+z-index: -1;
 }
 
 .top-right {
@@ -85,8 +86,12 @@ position: absolute;
 padding: 10px;
 font-size:9px;
 right: 0px;
+z-index: -1;
 }
 
 .downcard {
-	background-color: black;
+	background-image:url('../img/downface.jpg');
+	background-color:darkblue;
+	background-size: cover;
+	border: none;
 }

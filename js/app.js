@@ -1,8 +1,23 @@
-var table;
-
-table = document.getElementById("table");
+var table = document.getElementById("table");
+var zero = document.getElementById("zero");
 table.innerHTML = "playing cards table";
 
+//Events fired when the user dbl clicks on a cards
+document.addEventListener('dblclick', changeFace);
+
+
+
+//change side function
+
+function changeFace(event) {
+    if (event.target.className == 'card') {
+        event.target.className +=' downcard';
+    }
+    else if (event.target.className == 'card downcard') {
+        event.target.className = 'card';
+    }
+
+}
 
 /* Events fired on the drag target */
 
@@ -19,10 +34,11 @@ document.addEventListener("drag", function(event) {
     table.style.color = "red";
 });
 
-//Reset the opacity when finished dragging the p element 
+//Reset the opacity when finished dragging the p element and also change the face;
 document.addEventListener("dragend", function(event) {
 	console.log(event.target);
     event.target.style.opacity = "1";
+    changeFace(event);
 });
 
 
@@ -51,10 +67,11 @@ document.addEventListener("dragleave", function(event) {
 /* On drop - Prevent the browser default handling of the data (default is open as link on drop)
    Reset the color of the output text and DIV's border color
    Get the dragged data with the dataTransfer.getData() method
-   The dragged data is the id of the dragged element ("drag1")
    Append the dragged element into the drop element
 */
-document.addEventListener("drop", function(event) {
+document.addEventListener("drop", append);
+
+function append(event) {
     event.preventDefault();
     if ( event.target.className == "droptarget" ) {
         table.style.color = "";
@@ -62,4 +79,4 @@ document.addEventListener("drop", function(event) {
         var data = event.dataTransfer.getData("Text");
         event.target.appendChild(document.getElementById(data));
     }
-});
+}
