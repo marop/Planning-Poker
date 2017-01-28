@@ -1,0 +1,92 @@
+
+/*
+* {
+	border: 1px solid gray;
+}*/
+
+
+h1 {
+font-weight: normal;
+}
+
+h2 {
+font-size: 18px;
+font-weight: normal;
+}
+
+#header {
+width:100%;
+}
+
+#game {
+position:relative;
+width:100%;
+}
+
+#table {
+height: 200px;
+}
+
+#gameInfo {
+position: relative;
+max-width: 135px;
+float:left;
+}
+
+#setTimer {
+position:relative;
+margin:auto;
+max-width: 100px;
+}
+
+
+#timer {
+font-family:'Michroma';
+font-size: 18px;
+}
+
+
+#stats {
+position:relative;
+margin:auto;
+max-width: 100px;
+}
+
+#availablecards {
+position: relative;
+float:left;
+min-height: 400px;
+max-width: 830px;
+}
+
+
+.card {
+position: relative;
+width: 96px;
+height: 143px;
+border: 1px solid black;
+float: left;
+margin: 10px;
+border-radius:10px;
+font-family: 'Hammersmith One';
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.center {
+position: absolute;
+line-height: 143px;
+font-size: 30px;
+width:96px;
+text-align: center;
+}
+
+.top-right {
+position: absolute;
+padding: 10px;
+font-size:9px;
+right: 0px;
+}
+
+.downcard {
+	background-color: black;
+}
