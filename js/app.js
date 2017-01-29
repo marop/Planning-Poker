@@ -1,11 +1,24 @@
 var table = document.getElementById("table");
-var zero = document.getElementById("zero");
+var timer = document.getElementById("timer");
+var timeString = timer.innerHTML;
+var availableCards = document.getElementById('availablecards');
 table.innerHTML = "playing cards table";
 
 //Events fired when the user dbl clicks on a cards
-document.addEventListener('dblclick', changeFace);
+availableCards.addEventListener('dblclick', changeFace);
 
 
+function animate(event) {
+    if ((event.target.className == 'card') || (event.target.className == 'card downcard')) {
+        event.target.style.transform = "rotate(4deg)";
+    }
+}
+
+function animateReset(event) {
+    if ((event.target.className == 'card') || (event.target.className == 'card downcard')) {
+        event.target.style.transform = "rotate(0deg)";
+    }
+}
 
 //change side function
 
@@ -25,20 +38,18 @@ document.addEventListener("dragstart", function(event) {
     // The dataTransfer.setData() method sets the data type and the value of the dragged data
     event.dataTransfer.setData("Text", event.target.id);
     console.log(event.target);
-    // Change the opacity of the draggable element
-    event.target.style.opacity = "0.4";
+    event.target.style.transform = 'rotate(4deg)';
 });
 
-// While dragging the p element, change the color of the output text
 document.addEventListener("drag", function(event) {
-    table.style.color = "red";
+    event.target.style.transform = 'rotate(4deg)';
 });
 
-//Reset the opacity when finished dragging the p element and also change the face;
+//Reset the rotation when finished dragging the p element and also change the face;
 document.addEventListener("dragend", function(event) {
 	console.log(event.target);
-    event.target.style.opacity = "1";
-    changeFace(event);
+    event.target.style.transform = 'rotate(0deg)';
+   
 });
 
 
@@ -73,10 +84,20 @@ document.addEventListener("drop", append);
 
 function append(event) {
     event.preventDefault();
-    if ( event.target.className == "droptarget" ) {
+    
+    if (event.target.className == "droptarget" ) {
         table.style.color = "";
         event.target.style.border = "";
         var data = event.dataTransfer.getData("Text");
-        event.target.appendChild(document.getElementById(data));
+        var card = document.getElementById(data);
+        event.target.appendChild(card);
+        if (( card.className== 'card') && (event.target.id == 'table')) {
+            card.className +=' downcard';
+        }
+        else if (( card.className== 'card downcard') && (event.target.id == 'availablecards')) {
+            card.className ='card';
+        }
     }
+
+         
 }

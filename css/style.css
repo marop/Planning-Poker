@@ -95,3 +95,11 @@ z-index: -1;
 	background-size: cover;
 	border: none;
 }
+
+.downcard .center {
+	visibility : hidden;
+}
+
+.downcard .top-right {
+	visibility: hidden;
+}
